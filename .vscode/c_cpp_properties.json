@@ -6,34 +6,34 @@
         {
             "name": "Win32",
             "includePath": [
-                "c:/Users/perner/My Projects/grbl-Mega-5X/grbl",
-                "C:/Users/perner/.platformio/packages/framework-arduino-avr/cores/arduino",
-                "C:/Users/perner/.platformio/packages/framework-arduino-avr/variants/mega",
-                "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
-                "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
-                "C:/Users/perner/.platformio/packages/tool-unity",
+                "d:/Firmware/2020/keithstrachan/grbl-Mega-5X/grbl",
+                "C:/Users/keith/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/keith/.platformio/packages/framework-arduino-avr/variants/mega",
+                "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "C:/Users/keith/.platformio/packages/tool-unity",
                 ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "c:/Users/perner/My Projects/grbl-Mega-5X/grbl",
-                    "C:/Users/perner/.platformio/packages/framework-arduino-avr/cores/arduino",
-                    "C:/Users/perner/.platformio/packages/framework-arduino-avr/variants/mega",
-                    "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
-                    "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                    "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                    "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                    "C:/Users/perner/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
-                    "C:/Users/perner/.platformio/packages/tool-unity",
+                    "d:/Firmware/2020/keithstrachan/grbl-Mega-5X/grbl",
+                    "C:/Users/keith/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/keith/.platformio/packages/framework-arduino-avr/variants/mega",
+                    "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/keith/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "C:/Users/keith/.platformio/packages/tool-unity",
                     ""
                 ]
             },
             "defines": [
-                "PLATFORMIO=40304",
+                "PLATFORMIO=50003",
                 "ARDUINO_AVR_MEGA2560",
                 "F_CPU=16000000L",
                 "ARDUINO_ARCH_AVR",
@@ -41,10 +41,10 @@
                 "__AVR_ATmega2560__",
                 ""
             ],
-            "intelliSenseMode": "clang-x64",
+            "intelliSenseMode": "gcc-x64",
             "cStandard": "c11",
             "cppStandard": "c++11",
-            "compilerPath": "C:/Users/perner/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerPath": "C:/Users/keith/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
             "compilerArgs": [
                 "-mmcu=atmega2560",
                 ""
