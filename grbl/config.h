@@ -31,6 +31,7 @@
 #define config_h
 #include "grbl.h" // For Arduino IDE compatibility.
 
+#define GRBL_VERSION_BUILD "20201210"
 
 // Define CPU pin map and default settings.
 // NOTE: OEMs can avoid the need to maintain/update the defaults.h and cpu_map.h files and use only
