@@ -528,25 +528,38 @@
   // Note: we are using: 
   // Microstepping = 8 --> two of the jumpers installed
   // Motors at 200 steps per revolution
-  #define DEFAULT_AXIS1_STEPS_PER_UNIT 40  // originally 200
-  #define DEFAULT_AXIS2_STEPS_PER_UNIT 40  // originally 200
-  #define DEFAULT_AXIS3_STEPS_PER_UNIT 800 // originally 4400
+  // Unlike Marlin, these defaults are only applied when the 
+  // EEPROM is explicitly wiped, either by a `$RST=*` command or Grbl detecting a settings
+  // version type change (not frequent).
+  #define MICROSTEPS_AXIS1 8     // Microstepping = 1/8
+  #define STEP_REVS_AXIS1 200    // Motors steps per revolution
+  #define UNIT_PER_REV_AXIS1 40  // GT2 belt with 2mm pitch and 20 tooth pulley
+  #define DEFAULT_AXIS1_STEPS_PER_UNIT (MICROSTEPS_AXIS1*STEP_REVS_AXIS1/UNIT_PER_REV_AXIS1) // 40
+  #define MICROSTEPS_AXIS2 8     // Microstepping = 1/8
+  #define STEP_REVS_AXIS2 200    // Motors steps per revolution
+  #define UNIT_PER_REV_AXIS2 40  // GT2 belt with 2mm pitch and 20 tooth pulley
+  #define DEFAULT_AXIS2_STEPS_PER_UNIT (MICROSTEPS_AXIS2*STEP_REVS_AXIS2/UNIT_PER_REV_AXIS2) // 40
+  #define MICROSTEPS_AXIS3 8     // Microstepping = 1/8
+  #define STEP_REVS_AXIS3 200    // Motors steps per revolution
+  #define UNIT_PER_REV_AXIS3 2.0 // lead screw with 2mm pitch
+  #define DEFAULT_AXIS3_STEPS_PER_UNIT (MICROSTEPS_AXIS3*STEP_REVS_AXIS3/UNIT_PER_REV_AXIS3) // 800
+
   #define DEFAULT_AXIS1_MAX_RATE 7200.0 // 6000 mm/min = 6000/60 = 100 mm/sec
   #define DEFAULT_AXIS2_MAX_RATE 7200.0 // 6000 mm/min = 6000/60 = 100 mm/sec
   #define DEFAULT_AXIS3_MAX_RATE 400.0  //  300 mm/min =  300/60 =   5 mm/sec
   #define DEFAULT_AXIS1_ACCELERATION (400.0*60*60) // 30*60*60 mm/min^2 = 30 mm/sec^2
   #define DEFAULT_AXIS2_ACCELERATION (400.0*60*60) // 30*60*60 mm/min^2 = 30 mm/sec^2
   #define DEFAULT_AXIS3_ACCELERATION (200.0*60*60) // 100*60*60 mm/min^2 = 100 mm/sec^2
-  #define DEFAULT_AXIS1_MAX_TRAVEL 232.0 // mm
+  #define DEFAULT_AXIS1_MAX_TRAVEL 243.0 // mm
   #define DEFAULT_AXIS2_MAX_TRAVEL 798.0 // mm
-  #define DEFAULT_AXIS3_MAX_TRAVEL 112.0 // mm
-  #if N_AXIS > 3
-    #define DEFAULT_AXIS4_STEPS_PER_UNIT 40 // originally 200
-    #define DEFAULT_AXIS4_MAX_RATE 7200 // 6000 mm/min = 6000/60 = 100 mm/sec
-    #define DEFAULT_AXIS4_ACCELERATION (400.0*60*60) // 30*60*60 mm/min^2 = 30 mm/sec^2
-    #define DEFAULT_AXIS4_MAX_TRAVEL 798.0 // mm
+  #define DEFAULT_AXIS3_MAX_TRAVEL 110.0 // mm
+  #if N_AXIS > 3  // Cloned Y Axix (axis 2)
+    #define DEFAULT_AXIS4_STEPS_PER_UNIT DEFAULT_AXIS2_STEPS_PER_UNIT
+    #define DEFAULT_AXIS4_MAX_RATE DEFAULT_AXIS2_MAX_RATE
+    #define DEFAULT_AXIS4_ACCELERATION DEFAULT_AXIS2_ACCELERATION
+    #define DEFAULT_AXIS4_MAX_TRAVEL DEFAULT_AXIS2_MAX_TRAVEL
   #endif
-  #define DEFAULT_SPINDLE_RPM_MAX 1000.0 // rpm
+  #define DEFAULT_SPINDLE_RPM_MAX 20000.0 // rpm default 1000, set to 20.000 to support the air cooled 0.8kw DC110V 20000RPM CNC spindle
   #define DEFAULT_SPINDLE_RPM_MIN 0.0 // rpm
   #define DEFAULT_STEP_PULSE_MICROSECONDS 10
   #define DEFAULT_STEPPING_INVERT_MASK 0
@@ -559,11 +572,20 @@
   #define DEFAULT_INVERT_ST_ENABLE 0 // false
   #define DEFAULT_INVERT_LIMIT_PINS 0 // false
   #define DEFAULT_SOFT_LIMIT_ENABLE 1 // default true
-  #define DEFAULT_HARD_LIMIT_ENABLE 1  // false
+  #define DEFAULT_HARD_LIMIT_ENABLE 0  // false
   #define DEFAULT_INVERT_PROBE_PIN 0 // false
   #define DEFAULT_LASER_MODE 0 // false
   #define DEFAULT_HOMING_ENABLE 1  // true
-  #define DEFAULT_HOMING_DIR_MASK (1<<AXIS_1)|(1<<AXIS_2)|(1<<AXIS_4) // move positive dir, except x (axis 1) and y (axis 2 and 4)
+  // HOMING DIR MASK
+  // For CNC machines HOME was typically back right
+  // https://docs.carbide3d.com/tutorials/tutorial-homing/
+  // Back right would mean a value of zero (every axis move in positive directions until limits are hit)
+  // DEFAULT_HOMING_DIR_MASK 0 // ($23=0)
+  // HOME BACK RIGHT ($23=0)
+  // Homing front left would mean that every axis move positive dir, except x (axis 1) and y (axis 2 and 4) 
+  // DEFAULT_HOMING_DIR_MASK (1<<AXIS_1)|(1<<AXIS_2)|(1<<AXIS_4) // ($23=11)
+  // HOME FRONT LEFT ($23=11)
+  #define DEFAULT_HOMING_DIR_MASK 0 // ($23=0)
   #define DEFAULT_HOMING_FEED_RATE 500.0 // mm/min
   #define DEFAULT_HOMING_SEEK_RATE 2000.0 // mm/min
   #define DEFAULT_HOMING_DEBOUNCE_DELAY 250 // msec (0-65k)
